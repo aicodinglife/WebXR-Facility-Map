@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#071d26" />
+    <meta name="description" content="Interactive WebXR facility map proof of concept" />
+    <title>Oasis Aquatic Centre · Interactive Map</title>
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="scene" aria-label="Interactive 3D facility map"></canvas>
+
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <div>
+            <strong>OASIS</strong>
+            <small>AQUATIC CENTRE</small>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <button id="language-button" class="icon-button text-button" aria-label="Switch language">عربي</button>
+          <button id="help-button" class="icon-button" aria-label="Show controls">?</button>
+        </div>
+      </header>
+
+      <aside id="zone-list" class="zone-list" aria-label="Facility zones">
+        <p class="eyebrow" data-i18n="explore">EXPLORE THE FACILITY</p>
+        <nav id="zone-nav"></nav>
+      </aside>
+
+      <section id="info-panel" class="info-panel" aria-live="polite">
+        <button id="close-panel" class="close-button" aria-label="Close details">×</button>
+        <div id="info-accent" class="info-accent"></div>
+        <p id="info-kicker" class="eyebrow">ZONE 01</p>
+        <h1 id="info-title"></h1>
+        <p id="info-description"></p>
+        <dl id="info-stats"></dl>
+        <button id="focus-button" class="primary-button" data-i18n="focus">FOCUS ON MAP</button>
+      </section>
+
+      <div id="tooltip" class="tooltip" role="tooltip"></div>
+
+      <div class="legend">
+        <span><i class="legend-dot interactive"></i><span data-i18n="interactive">Interactive zone</span></span>
+        <span><i class="legend-dot route"></i><span data-i18n="route">Main circulation</span></span>
+      </div>
+
+      <div class="controls-hint">
+        <span class="desktop-hint"><kbd>DRAG</kbd> <span data-i18n="rotate">Rotate</span> · <kbd>SCROLL</kbd> <span data-i18n="zoom">Zoom</span></span>
+        <span class="xr-hint"><span data-i18n="xrHint">Point and select a zone</span></span>
+      </div>
+
+      <div id="loading" class="loading">
+        <div class="loading-mark"></div>
+        <p data-i18n="loading">Preparing facility map…</p>
+      </div>
+
+      <dialog id="help-dialog">
+        <button id="close-help" class="close-button" aria-label="Close help">×</button>
+        <p class="eyebrow" data-i18n="navigation">NAVIGATION</p>
+        <h2 data-i18n="howTo">How to explore</h2>
+        <div class="help-grid">
+          <div><span class="help-icon">↻</span><strong data-i18n="desktop">Desktop</strong><p data-i18n="desktopHelp">Drag to orbit, scroll to zoom, and click a colored zone for details.</p></div>
+          <div><span class="help-icon">◎</span><strong data-i18n="quest">Meta Quest</strong><p data-i18n="questHelp">Select Enter VR, point either controller, and squeeze the trigger.</p></div>
+          <div><span class="help-icon">◇</span><strong data-i18n="move">Move</strong><p data-i18n="moveHelp">Use the thumbstick to move around the facility in immersive mode.</p></div>
+        </div>
+      </dialog>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
